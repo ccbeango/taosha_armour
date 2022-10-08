@@ -1,0 +1,29 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Vue: Start",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/vite",
+      // "env": { "NODE_ENV": "development" },
+      // "args":  ["serve", "--mode development", "--open"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Attach Vue File",
+      "type": "chrome",
+      "request": "attach",
+      "smartStep": true,
+      "urlFilter": "https://localhost:*",
+      "port": 9222,
+      "timeout": 10000,
+      "webRoot": "${workspaceRoot}/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {}
+    }
+  ]
+}
