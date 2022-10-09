@@ -90,7 +90,8 @@ module.exports = {
       {
         value: 'chore',
         name: "chore:    Other changes that don't modify src or test files",
-        emoji: ':hammer:'
+        // emoji: ':hammer:'
+        emoji: '🤖'
       },
       {
         value: 'revert',
