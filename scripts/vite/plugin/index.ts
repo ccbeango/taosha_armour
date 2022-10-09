@@ -11,7 +11,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import configMultiPagePlugin from './multiPage'
 
 export default function createVitePlugins(viteEnv: ViteEnv) {
-  // const {  } = viteEnv
+  const { VITE_REMOVE_CONSOLE } = viteEnv
+  console.log(VITE_REMOVE_CONSOLE)
 
   const vitePlugins: PluginOption[] = [
     vue(),

@@ -25,6 +25,7 @@ const __APP_INFO__ = {
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
+  console.log(command)
   const root = process.cwd()
   const env = loadEnv(mode, root)
 
