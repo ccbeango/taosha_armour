@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
+
+// import { yo } from 'yoo-hoo'
+// yo('ho', {
+//   color: 'blue',
+//   spacing: 20
+// })
 </script>
 
 <template>

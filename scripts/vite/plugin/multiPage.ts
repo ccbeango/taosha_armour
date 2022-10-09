@@ -1,39 +1,36 @@
 import MpaPlugin from 'vite-plugin-mpa-plus'
 import type { Rewrite, Pages } from 'vite-plugin-mpa-plus'
+import fs from 'fs'
 
 export default function configMultiPagePlugin() {
-  return MpaPlugin({
-    pages: {
-      main: {
-        entry: 'src/apps/main/main.ts',
-        filename: 'index.html',
-        template: 'src/apps/main/index.html',
-        inject: {
-          data: {
-            title: 'mpa-app1',
-            injectScript: `<script type="module" src="/test.js"></script>`
-          }
-        }
-      },
-      hello: {
-        entry: 'src/apps/hello/main.ts',
-        filename: 'hello.html',
-        template: 'src/apps/hello/index.html',
-        inject: {
-          data: {
-            title: 'mpa-app2',
-            injectScript: `<script type="module" src="/test.js"></script>`
-          }
+  const entrys = fs.readdirSync('src/apps')
+  const rewrites: Rewrite[] = []
+  const pages = entrys.reduce<Pages>((res, pageName) => {
+    res[pageName] = {
+      entry: `src/apps/${pageName}/main.ts`,
+      // filename: `pages/${pageName}.html`,
+      filename: pageName === 'index' ? 'index.html' : `pages/${pageName}.html`,
+      template: `src/apps/${pageName}/index.html`,
+      inject: {
+        data: {
+          title: 'mpa-app1',
+          injectScript: `<script type="module" src="/test.js"></script>`
         }
       }
     }
+
+    rewrites.push({
+      from: new RegExp(`^/${pageName}$`),
+      to: `/pages/${pageName}.html`
+    })
+
+    return res
+  }, {})
+
+  return MpaPlugin({
+    pages
     // historyApiFallback: {
-    //   rewrites: [
-    //     {
-    //       from: `/view-main`,
-    //       to: `main.html`
-    //     }
-    //   ]
+    //   rewrites
     // }
   })
 }

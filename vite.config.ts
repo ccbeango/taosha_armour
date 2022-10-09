@@ -2,12 +2,11 @@ import { fileURLToPath, URL } from 'url'
 import dayjs from 'dayjs'
 import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 
-import pkg from './package.json'
 import { wrapperEnv } from './scripts/utils'
 import { createProxy, createVitePlugins } from './scripts/vite'
+
+import pkg from './package.json'
 
 function pathResolve(dir: string) {
   return fileURLToPath(new URL(dir, import.meta.url))
@@ -41,11 +40,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     root,
     base: VITE_PUBLIC_PATH,
-    // plugins: [vue(), vueJsx()],
     plugins: createVitePlugins(viteEnv),
     resolve: {
       alias: {
-        '@': pathResolve('./src/apps/main'),
+        '@': pathResolve('./src/apps/index'),
         '#': pathResolve('./types')
       }
     },
