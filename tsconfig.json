@@ -7,6 +7,7 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "allowJs": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
@@ -16,7 +17,9 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "@/*": ["src/apps/index/*"],
-      "#/*": ["types/*"]
+      "@main/*": ["src/apps/main/*"],
+      "#/*": ["types/*"],
+      "@common/*": ["src/common/*"]
     }
   },
   "include": [

@@ -7,7 +7,6 @@ export function wrapperEnv(envConf: Recordable) {
   for (const envName of Object.keys(envConf)) {
     let realVal = envConf[envName].replace(/\\n/g, '\n') // 允许换行符
     realVal = realVal === 'true' ? true : realVal === 'false' ? false : realVal
-    console.log(realVal)
 
     if (envName === 'VITE_PORT') {
       realVal = Number(realVal)

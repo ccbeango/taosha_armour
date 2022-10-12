@@ -1,0 +1,26 @@
+// 测试sass编译为css的结果
+// 控制台执行：npx sass .\testScripts\test.scss .\dist\test.css --watch
+
+.container {
+  font-size: 16px;
+
+  &__switch {
+    color: #f00;
+
+    &--active {
+      display: block;
+    }
+  }
+}
+
+.container {
+  font-size: 16px;
+
+  .container__switch {
+    color: #f00;
+
+    .container--active {
+      display: block;
+    }
+  }
+}

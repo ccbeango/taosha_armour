@@ -7,6 +7,13 @@
     <title><%- title %></title>
   </head>
   <body>
+    <script>
+      ;(function () {
+        var htmlRoot = document.documentElement
+        var theme = window.localStorage.getItem('theme')
+        htmlRoot.setAttribute('data-theme', theme || 'light')
+      })()
+    </script>
     <div id="app"></div>
     <%- injectScript %>
   </body>

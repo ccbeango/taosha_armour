@@ -1,0 +1,17 @@
+@use './normalize';
+@use './reset';
+@import './layout';
+@import './mixins';
+@import './palette';
+
+@mixin test {
+  background: blue;
+}
+
+html[data-theme='light'] {
+  --test-color: green;
+}
+
+html[data-theme='dark'] {
+  background: gray;
+}

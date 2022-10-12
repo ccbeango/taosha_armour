@@ -23,9 +23,8 @@ const __APP_INFO__ = {
   lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
 }
 
-// https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  console.log(command)
+  const isBuild = command === 'build'
   const root = process.cwd()
   const env = loadEnv(mode, root)
 
@@ -41,15 +40,27 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     root,
     base: VITE_PUBLIC_PATH,
-    plugins: createVitePlugins(viteEnv),
+    plugins: createVitePlugins(viteEnv, isBuild),
     resolve: {
       alias: {
         '@': pathResolve('./src/apps/index'),
-        '#': pathResolve('./types')
+        '@main': pathResolve('./src/apps/main'),
+        '#': pathResolve('./types'),
+        '@common': pathResolve('./src/common')
       }
     },
     define: {
       __APP_INFO__: JSON.stringify(__APP_INFO__)
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "@common/styles/index.scss" as *;
+            $orange: orange;
+          `
+        }
+      }
     },
     server: {
       https: true,
@@ -61,6 +72,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     esbuild: {
       sourcemap: mode === 'development' ?? VITE_SOURCE_MAP,
       pure: VITE_REMOVE_CONSOLE ? ['console.log', 'debugger'] : []
-    }
+    },
+    build: {}
   }
 }

@@ -1,3 +1,4 @@
+// https://cz-git.qbb.sh/
 /** @type {import('cz-git').UserConfig} */
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -34,6 +35,7 @@ module.exports = {
     'footer-leading-blank': [1, 'always']
   },
   prompt: {
+    // cz_alias=fd git cz 提交文本快捷输入
     alias: { fd: 'docs: fix typos' },
     messages: {
       type: "Select the type of change that you're committing:",
@@ -50,59 +52,67 @@ module.exports = {
       confirmCommit: 'Are you sure you want to proceed with the commit above?'
     },
     types: [
-      { value: 'feat', name: 'feat:     A new feature', emoji: ':sparkles:' },
-      { value: 'fix', name: 'fix:      A bug fix', emoji: ':bug:' },
+      { value: 'feat', name: 'feat:     A new feature', emoji: '✨' },
+      { value: 'fix', name: 'fix:      A bug fix', emoji: '🐛' },
       {
         value: 'docs',
         name: 'docs:     Documentation only changes',
-        emoji: ':memo:'
+        emoji: '📝'
       },
       {
         value: 'style',
         name: 'style:    Changes that do not affect the meaning of the code',
-        emoji: ':lipstick:'
+        emoji: '💄'
       },
       {
         value: 'refactor',
         name: 'refactor: A code change that neither fixes a bug nor adds a feature',
-        emoji: ':recycle:'
+        emoji: '💡'
       },
       {
         value: 'perf',
         name: 'perf:     A code change that improves performance',
-        emoji: ':zap:'
+        emoji: '⚡️'
       },
       {
         value: 'test',
         name: 'test:     Adding missing tests or correcting existing tests',
-        emoji: ':white_check_mark:'
+        emoji: '💍'
       },
       {
         value: 'build',
         name: 'build:    Changes that affect the build system or external dependencies',
-        emoji: ':package:'
+        emoji: '📦'
       },
       {
         value: 'ci',
         name: 'ci:       Changes to our CI configuration files and scripts',
-        emoji: ':ferris_wheel:'
+        emoji: '🎡'
       },
       {
         value: 'chore',
         name: "chore:    Other changes that don't modify src or test files",
-        // emoji: ':hammer:'
         emoji: '🤖'
       },
       {
         value: 'revert',
         name: 'revert:   Reverts a previous commit',
-        emoji: ':rewind:'
+        emoji: '⏪'
       }
     ],
     useEmoji: true,
     emojiAlign: 'center',
     themeColorCode: '',
-    scopes: [],
+    scopes: [
+      'components',
+      'utils',
+      'styles',
+      'deps',
+      'other',
+      'test',
+      'ui',
+      'config'
+    ],
     allowCustomScopes: true,
     allowEmptyScopes: true,
     customScopesAlign: 'bottom',
@@ -115,6 +125,7 @@ module.exports = {
     breaklineChar: '|',
     skipQuestions: [],
     issuePrefixs: [
+      { value: 'link', name: 'link:     ISSUES is  processing' },
       { value: 'closed', name: 'closed:   ISSUES has been processed' }
     ],
     customIssuePrefixsAlign: 'top',

@@ -8,13 +8,14 @@ export default function configMultiPagePlugin() {
   const pages = entrys.reduce<Pages>((res, pageName) => {
     res[pageName] = {
       entry: `src/apps/${pageName}/main.ts`,
-      // filename: `pages/${pageName}.html`,
-      filename: pageName === 'index' ? 'index.html' : `pages/${pageName}.html`,
+      filename: `pages/${pageName}.html`,
       template: `src/apps/${pageName}/index.html`,
       inject: {
         data: {
           title: 'mpa-app1',
-          injectScript: `<script type="module" src="/test.js"></script>`
+          injectScript: `
+            <script type="module" src="/test.js"></script>
+          `
         }
       }
     }
