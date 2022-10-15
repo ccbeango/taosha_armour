@@ -16,10 +16,11 @@
     "types": ["vite/client"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@/*": ["src/apps/index/*"],
+      "@/*": ["src/*"],
+      "@index/*": ["src/apps/index/*"],
       "@main/*": ["src/apps/main/*"],
-      "#/*": ["types/*"],
-      "@common/*": ["src/common/*"]
+      "@common/*": ["src/common/*"],
+      "#/*": ["types/*"]
     }
   },
   "include": [

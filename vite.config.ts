@@ -43,10 +43,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     plugins: createVitePlugins(viteEnv, isBuild),
     resolve: {
       alias: {
-        '@': pathResolve('./src/apps/index'),
+        '@': pathResolve('./src'),
+        '@index': pathResolve('./src/apps/index'),
         '@main': pathResolve('./src/apps/main'),
-        '#': pathResolve('./types'),
-        '@common': pathResolve('./src/common')
+        '@common': pathResolve('./src/common'),
+        '#': pathResolve('./types')
       }
     },
     define: {

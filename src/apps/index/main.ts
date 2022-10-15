@@ -1,14 +1,35 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import 'virtual:svg-icons-register'
-// import '@common/styles/reset.css'
 
 import App from './App.vue'
-import router from './router'
+import { setupStore } from './store'
+import setupGlobalRegister from './global'
+import { router, setupRouter, setupRouterGuard } from './router'
+import setupGlobalDirevtives from './directives'
 
-const app = createApp(App)
+/**
+ * 启动
+ */
+function fireUp() {
+  const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+  // store
+  setupStore(app)
 
-app.mount('#app')
+  // Vue全局相关设置
+  setupGlobalRegister(app)
+
+  // 路由
+  setupRouter(app)
+
+  // 路由守卫
+  setupRouterGuard(router)
+
+  // 全局指令
+  setupGlobalDirevtives(app)
+
+  // 挂载
+  app.mount('#app')
+}
+
+fireUp()

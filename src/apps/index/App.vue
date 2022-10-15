@@ -1,13 +1,29 @@
+<!--
+ * @Author       : ccbean
+ * @Date         : 2022-10-14 21:46:51
+ * @LastEditors  : ccbean
+ * @LastEditTime : 2022-10-15 15:42:32
+ * @Description  : 
+-->
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 
-import SvgIcon from '@/components/SvgIcon.vue'
+import SvgIcon from '@index//components/SvgIcon.vue'
+
+import { useCounterStore, usePermissionStore } from '@index/store'
+import { storeToRefs } from 'pinia'
 
 // import { yo } from 'yoo-hoo'
 // yo('ho', {
 //   color: 'blue',
 //   spacing: 20
 // })
+const counterStore = useCounterStore()
+const { counter } = storeToRefs(counterStore)
+const { increment } = counterStore
+
+const permission = usePermissionStore()
+const { buildRoutesAction } = permission
 </script>
 
 <template>
@@ -15,14 +31,16 @@ import SvgIcon from '@/components/SvgIcon.vue'
     <img
       alt="Vue logo"
       class="logo"
-      src="@/assets/logo.svg"
+      src="@index//assets/logo.svg"
       width="125"
       height="125"
     />
+    <div>
+      <h2>{{ counter }}</h2>
+      <el-button type="danger" @click="increment">counter +1</el-button>
+    </div>
 
-    <h2 class="color-red">红色测试</h2>
-
-    <el-button type="danger">你好啊</el-button>
+    <h2 class="color-red" @click="buildRoutesAction">红色测试</h2>
 
     <SvgIcon name="bag"></SvgIcon>
 
