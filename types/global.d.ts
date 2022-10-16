@@ -8,6 +8,7 @@
 export declare global {
   declare type RecordKey = string | number | symbol
   declare type Recordable<T = any> = Record<RecordKey, T>
+  declare type Nullable<T> = T | null
 
   declare interface ViteEnv {
     VITE_REMOVE_CONSOLE: boolean

@@ -1,7 +1,7 @@
 import type { AppRouteModule } from '@index/router/types'
 
 import { LAYOUT } from '@index//router/constant'
-import { t } from '@index//router/utils'
+import { t } from '@index/router/utils'
 
 const about: AppRouteModule = {
   path: '/about',

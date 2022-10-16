@@ -1,8 +1,8 @@
 /*
  * @Author       : ccbean
  * @Date         : 2022-10-15 14:06:03
- * @LastEditors  : ccbean
- * @LastEditTime : 2022-10-15 17:46:13
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-16 15:42:38
  * @Description  : vue-router 扩展
  */
 export {}
@@ -32,6 +32,6 @@ declare module 'vue-router' {
     /**
      * 隐藏菜单
      */
-    hideMenu: boolean
+    hideMenu?: boolean
   }
 }

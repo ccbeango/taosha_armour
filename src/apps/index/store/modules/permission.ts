@@ -1,33 +1,27 @@
 /*
  * @Author       : ccbean
  * @Date         : 2022-10-15 11:36:28
- * @LastEditors  : ccbean
- * @LastEditTime : 2022-10-15 18:04:37
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-16 17:50:18
  * @Description  : 权限控制Store
  */
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { Menu, AppRouteRecordRaw } from '@index/router/types'
 
+import { isUrl } from '@index/utils/is'
 import { asyncRoutes } from '@index/router/routes'
 
 interface TreeHelperConfig {
   id: string
   pid: string
   children: string
-  /**
-   * 贪婪模式，默认关闭
-   * - 开启，当前item判断为false，但有children，则返回item
-   * - 关闭，当前item判断为false，不返回item
-   */
-  eager: boolean
 }
 
 const DEFAULT_CONFIG: TreeHelperConfig = {
   id: 'id',
   children: 'children',
-  pid: 'pid',
-  eager: false
+  pid: 'pid'
 }
 
 const getConfig = (config: Partial<TreeHelperConfig>) => ({
@@ -46,7 +40,7 @@ function filter<T = any>(
   func: (n: any) => boolean,
   config: Partial<TreeHelperConfig> = {}
 ) {
-  const { children, eager } = getConfig(config)
+  const { children } = getConfig(config)
 
   const listFilter = (list: T[]) => {
     return list
@@ -54,16 +48,40 @@ function filter<T = any>(
       .filter(item => {
         const bool = func(item)
         // 遍历children
-        if (item[children] && (eager || (!eager && bool))) {
-          // 命中条件：有children；开启了贪婪模式 或 关闭贪婪模式自身为true
+        if (item[children] && bool) {
           item[children] = listFilter(item[children])
         }
 
-        return !eager ? bool : bool || (item[children] && item[children].length)
+        return bool
       })
   }
 
   return listFilter(tree)
+}
+
+/**
+ * 修正菜单路径
+ *  - 转换route中相对路径为绝对路径
+ * @param {Menu} menus
+ * @param {*} parentPath
+ * @return {*}
+ */
+function joinParentPath(menus: Menu[], parentPath = '') {
+  const res: Menu[] = []
+  for (const menu of menus) {
+    let item = { ...menu }
+    if (!menu.path.startsWith('/') && !isUrl(menu.path)) {
+      // 路径不以 / 开头，也不是 url，path属性添加父路径 parentPath
+      item = { ...menu, path: `${parentPath}/${menu.path}` }
+    }
+    res.push(item)
+
+    if (menu?.children?.length) {
+      item.children = joinParentPath(menu.children, menu.path)
+    }
+  }
+
+  return res
 }
 
 /**
@@ -101,10 +119,17 @@ function transformRouteToMenu(routeList: AppRouteRecordRaw[]) {
 }
 
 export const usePermissionStore = defineStore('permission', () => {
-  const menus = ref<Menu[]>([])
+  /** 前端生成的菜单Tree，前端菜单模式 */ // TODO：后续可扩展后端控制菜单
+  const frontMenus = ref<Menu[]>([])
+  /** 是否已添加动态路由 */
+  const isDynamicAddedRoute = ref(false)
+
+  function setDynamicAddedRouteAction(added: boolean) {
+    isDynamicAddedRoute.value = added
+  }
 
   /**
-   * @description: 构建路由
+   * 构建路由
    * @return {*}
    */
   async function buildRoutesAction(): Promise<AppRouteRecordRaw[]> {
@@ -124,14 +149,17 @@ export const usePermissionStore = defineStore('permission', () => {
     routes = filter(asyncRoutes, routeRoleFilter)
     // 将路由转换成菜单
     const menuList = transformRouteToMenu(routes)
-    menus.value = menuList
+    frontMenus.value = joinParentPath(menuList)
 
     return routes
   }
 
   return {
-    menus,
+    frontMenus,
+    isDynamicAddedRoute,
 
+    // Actions
+    setDynamicAddedRouteAction,
     buildRoutesAction
   }
 })

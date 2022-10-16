@@ -1,8 +1,8 @@
 /*
  * @Author       : ccbean
  * @Date         : 2022-10-14 21:46:51
- * @LastEditors  : ccbean
- * @LastEditTime : 2022-10-15 12:27:01
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-16 15:37:17
  * @Description  :
  */
 import type { App } from 'vue'
@@ -27,11 +27,11 @@ export const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
   routes: basicRoutes as unknown as RouteRecordRaw[]
   // routes: [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
+  //   {
+  //     path: '/',
+  //     name: 'home',
+  //     component: HomeView
+  //   },
   //   {
   //     path: '/about',
   //     name: 'about',

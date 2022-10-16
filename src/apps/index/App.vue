@@ -1,8 +1,8 @@
 <!--
  * @Author       : ccbean
  * @Date         : 2022-10-14 21:46:51
- * @LastEditors  : ccbean
- * @LastEditTime : 2022-10-15 15:42:32
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-16 17:48:03
  * @Description  : 
 -->
 <script setup lang="ts">
@@ -12,6 +12,10 @@ import SvgIcon from '@index//components/SvgIcon.vue'
 
 import { useCounterStore, usePermissionStore } from '@index/store'
 import { storeToRefs } from 'pinia'
+
+import { getOsType } from '@index/utils/ua'
+
+console.log('getOsType', getOsType())
 
 // import { yo } from 'yoo-hoo'
 // yo('ho', {

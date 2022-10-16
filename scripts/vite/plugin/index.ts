@@ -37,7 +37,7 @@ export default function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
       VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
     ),
     // 图片压缩
-    configImageminPlugin(isBuild && VITE_USE_IMAGEMIN),
+    // configImageminPlugin(isBuild && VITE_USE_IMAGEMIN),
     // 可视化bundle报告
     configVisualizerPlugin(isBuild && VITE_VISUALIZER_REPORT)
   ]

@@ -14,6 +14,7 @@ module.exports = {
   },
   rules: {
     'no-undef': 0,
-    '@typescript-eslint/no-explicit-any': 0
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-non-null-assertion': 0
   }
 }

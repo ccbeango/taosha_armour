@@ -1,3 +1,10 @@
+/*
+ * @Author       : liuyinghao
+ * @Date         : 2022-10-16 10:01:22
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-16 14:51:00
+ * @Description  :
+ */
 import type { Router } from 'vue-router'
 import nProgress from 'nprogress'
 
@@ -44,7 +51,9 @@ function createPageLoadingGuard(router: Router) {
     }
   })
 
-  router.afterEach(async () => {})
+  router.afterEach(async () => {
+    return true
+  })
 }
 
 /**
@@ -58,10 +67,10 @@ function createProgressGuard(router: Router) {
       return true
     }
     nProgress.start()
+    return true
   })
 
   router.afterEach(async () => {
     nProgress.done()
-    return true
   })
 }
