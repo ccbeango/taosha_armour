@@ -2,7 +2,7 @@
  * @Author       : liuyinghao
  * @Date         : 2022-10-16 10:05:04
  * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-16 17:50:21
+ * @LastEditTime : 2022-10-17 17:06:52
  * @Description  : 用户信息Store
  */
 import { defineStore } from 'pinia'
@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user', () => {
     username: 'ccbean',
     avatar: 'https://avatars.githubusercontent.com/u/16501284?v=4',
     desc: '你好你好啊',
-    homePath: '/index',
+    homePath: '/',
     roles: ['super']
   }
 

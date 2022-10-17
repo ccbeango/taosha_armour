@@ -1,14 +1,14 @@
 <!--
  * @Author       : ccbean
  * @Date         : 2022-10-14 21:46:51
- * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-16 17:48:03
+ * @LastEditors  : ccbean
+ * @LastEditTime : 2022-10-17 22:03:29
  * @Description  : 
 -->
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 
-import SvgIcon from '@index//components/SvgIcon.vue'
+import SvgIcon from '@index/components/SvgIcon.vue'
 
 import { useCounterStore, usePermissionStore } from '@index/store'
 import { storeToRefs } from 'pinia'
@@ -35,7 +35,7 @@ const { buildRoutesAction } = permission
     <img
       alt="Vue logo"
       class="logo"
-      src="@index//assets/logo.svg"
+      src="@index/assets/logo.svg"
       width="125"
       height="125"
     />
@@ -45,6 +45,8 @@ const { buildRoutesAction } = permission
     </div>
 
     <h2 class="color-red" @click="buildRoutesAction">红色测试</h2>
+
+    <p>{{ $t('common.message.hi') }}</p>
 
     <SvgIcon name="bag"></SvgIcon>
 

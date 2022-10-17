@@ -2,7 +2,7 @@
  * @Author       : liuyinghao
  * @Date         : 2022-10-16 10:01:22
  * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-16 14:23:36
+ * @LastEditTime : 2022-10-17 17:07:31
  * @Description  : 权限守卫
  */
 import type { Router, RouteRecordRaw } from 'vue-router'
@@ -23,6 +23,7 @@ export function createPermissionGuard(router: Router) {
   const permissionStore = usePermissionStore()
 
   router.beforeEach(async (to, from) => {
+    return true
     // 访问根路由，如果用户定义了家路由，直接跳转
     if (from.path === ROOT_PATH && userStore.getUserInfo.homePath) {
       return userStore.getUserInfo.homePath

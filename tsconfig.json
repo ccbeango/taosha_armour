@@ -21,7 +21,8 @@
       "@main/*": ["src/apps/main/*"],
       "@common/*": ["src/common/*"],
       "#/*": ["types/*"]
-    }
+    },
+    "preserveValueImports": false
   },
   "include": [
     "src/**/*.ts",
@@ -31,8 +32,6 @@
     "types/*.d.ts",
     "types/**/*.d.ts",
     "types/**/*.ts"
-    // "scripts/**/*.ts",
-    // "scripts/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
