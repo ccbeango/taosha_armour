@@ -1,8 +1,8 @@
 /*
  * @Author       : liuyinghao
  * @Date         : 2022-10-17 14:49:48
- * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-19 09:51:57
+ * @LastEditors  : ccbean
+ * @LastEditTime : 2022-10-19 20:01:00
  * @Description  : i18n
  */
 import { createI18n } from 'vue-i18n'
@@ -33,6 +33,7 @@ function setI18nLanguage(locale: LocaleType) {
  * 一次性加载所有语言包
  * @return {*}
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function loadLangPackageSync() {
   const messages: Recordable = {}
   const localeModules = import.meta.globEager('./lang/*.ts')

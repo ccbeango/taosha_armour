@@ -1,8 +1,8 @@
 /*
  * @Author       : liuyinghao
  * @Date         : 2022-10-16 16:02:40
- * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-16 17:47:27
+ * @LastEditors  : ccbean
+ * @LastEditTime : 2022-10-19 20:05:05
  * @Description  : 基本判断工具函数
  */
 
@@ -30,6 +30,7 @@ export function isBoolean(val: unknown): val is boolean {
   return is(val, 'String')
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function isFunction(val: unknown): val is Function {
   return is(val, 'Function') || is(val, 'AsyncFunction')
 }
@@ -94,6 +95,7 @@ export function isPromise<T = any>(val?: unknown): val is Promise<T> {
 export function isUrl(path: string): boolean {
   // TODO: 正则需要优化
   const reg =
+    // eslint-disable-next-line no-useless-escape
     /^(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?(\/#\/)?(?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/
   return reg.test(path)
 }

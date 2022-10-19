@@ -1,8 +1,8 @@
 /*
  * @Author       : liuyinghao
  * @Date         : 2022-10-16 10:05:04
- * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-17 17:06:52
+ * @LastEditors  : ccbean
+ * @LastEditTime : 2022-10-19 20:02:42
  * @Description  : 用户信息Store
  */
 import { defineStore } from 'pinia'
@@ -35,7 +35,9 @@ export const useUserStore = defineStore('user', () => {
     return token.value || 'fake_token'
   })
 
-  async function loginAction(params: any) {}
+  async function loginAction() {
+    await afterLoginAction(false)
+  }
 
   async function afterLoginAction(goHome?: boolean) {
     goHome && (await router.replace(PageEnum.BASE_HOME))

@@ -1,13 +1,13 @@
 /*
  * @Author       : ccbean
  * @Date         : 2022-10-14 21:46:51
- * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-19 11:54:26
+ * @LastEditors  : ccbean
+ * @LastEditTime : 2022-10-19 20:02:08
  * @Description  :
  */
 import type { App } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
+// import type { RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 export { setupRouterGuard } from './guard'
