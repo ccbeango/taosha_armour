@@ -1,18 +1,18 @@
 /*
  * @Author       : ccbean
  * @Date         : 2022-10-15 11:21:54
- * @LastEditors  : ccbean
- * @LastEditTime : 2022-10-15 16:25:29
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-19 12:57:03
  * @Description  :
  */
-import type { AppRouteRecordRaw } from '@index//router/types'
-import { t } from '@index//router/utils'
+import type { AppRouteRecordRaw } from '@/router/types'
+import { t } from '@/router/utils'
 import {
   REDIRECT_NAME,
   LAYOUT,
   EXCEPTION_COMPONENT,
   PAGE_NOT_FOUND_NAME
-} from '@index//router/constant'
+} from '@/router/constant'
 
 // 404 on a page
 export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
@@ -53,7 +53,7 @@ export const REDIRECT_ROUTE: AppRouteRecordRaw = {
     {
       path: '/redirect/:path(.*)',
       name: REDIRECT_NAME,
-      component: () => import('@index/views/sys/redirect/index.vue'),
+      component: () => import('@/views/HomeView.vue'),
       meta: {
         title: REDIRECT_NAME,
         hideBreadcrumb: true
@@ -76,7 +76,7 @@ export const ERROR_LOG_ROUTE: AppRouteRecordRaw = {
     {
       path: 'list',
       name: 'ErrorLogList',
-      component: () => import('@index/views/sys/error-log/index.vue'),
+      component: () => import('@/views/HomeView.vue'),
       meta: {
         title: t('routes.basic.errorLogList'),
         hideBreadcrumb: true,

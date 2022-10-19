@@ -2,7 +2,7 @@
  * @Author       : ccbean
  * @Date         : 2022-10-14 21:46:51
  * @LastEditors  : liuyinghao
- * @LastEditTime : 2022-10-17 17:06:05
+ * @LastEditTime : 2022-10-19 11:54:26
  * @Description  :
  */
 import type { App } from 'vue'
@@ -12,7 +12,7 @@ import HomeView from '../views/HomeView.vue'
 
 export { setupRouterGuard } from './guard'
 
-import { basicRoutes } from './routes'
+// import { basicRoutes } from './routes'
 
 // basicRoutes.unshift({
 //   path: '/',

@@ -1,12 +1,15 @@
-import type { AppRouteRecordRaw, AppRouteModule } from '@index/router/types'
+/*
+ * @Author       : liuyinghao
+ * @Date         : 2022-10-16 10:01:22
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-19 12:56:17
+ * @Description  :
+ */
+import type { AppRouteRecordRaw, AppRouteModule } from '@/router/types'
 
-import {
-  PAGE_NOT_FOUND_ROUTE,
-  REDIRECT_ROUTE
-} from '@index/router/routes/basic'
+import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '@/router/routes/basic'
 
-import { mainOutRoutes } from './mainOut'
-import { t } from '@index/router/utils'
+import { t } from '@/router/utils'
 
 // Vite3: import.meta.glob(path, { eager: true }) 直接引入所有的模块
 // const modules = import.meta.glob('./modules/**/*.ts', { eager: true })
@@ -37,7 +40,7 @@ export const RootRoute: AppRouteRecordRaw = {
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('@index/views/sys/login/Login.vue'),
+  component: () => import('@/views/HomeView.vue'),
   meta: {
     title: t('routes.basic.login')
   }
@@ -48,7 +51,6 @@ export const LoginRoute: AppRouteRecordRaw = {
 export const basicRoutes = [
   LoginRoute,
   RootRoute,
-  ...mainOutRoutes,
   REDIRECT_ROUTE,
   PAGE_NOT_FOUND_ROUTE
 ]

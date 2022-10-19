@@ -1,19 +1,21 @@
 <!--
  * @Author       : ccbean
  * @Date         : 2022-10-14 21:46:51
- * @LastEditors  : ccbean
- * @LastEditTime : 2022-10-17 22:03:29
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-19 11:01:11
  * @Description  : 
 -->
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 
-import SvgIcon from '@index/components/SvgIcon.vue'
+import SvgIcon from '@/components/SvgIcon.vue'
 
-import { useCounterStore, usePermissionStore } from '@index/store'
+import { useCounterStore, usePermissionStore } from '@/store'
 import { storeToRefs } from 'pinia'
 
-import { getOsType } from '@index/utils/ua'
+import { getOsType } from '@/utils/ua'
+
+import { changeLocaleLang } from '@/locales/setupI18n'
 
 console.log('getOsType', getOsType())
 
@@ -35,7 +37,7 @@ const { buildRoutesAction } = permission
     <img
       alt="Vue logo"
       class="logo"
-      src="@index/assets/logo.svg"
+      src="@/assets/logo.svg"
       width="125"
       height="125"
     />
@@ -46,7 +48,23 @@ const { buildRoutesAction } = permission
 
     <h2 class="color-red" @click="buildRoutesAction">红色测试</h2>
 
+    <div class="locale-changer">
+      <select v-model="$i18n.locale">
+        <option
+          v-for="locale in $i18n.availableLocales"
+          :key="`locale-${locale}`"
+          :value="locale"
+        >
+          {{ locale }}
+        </option>
+      </select>
+    </div>
+
+    <el-button @click="changeLocaleLang('en')">设置成英语</el-button>
+    <el-button @click="changeLocaleLang('zh_CN')">设置成中文</el-button>
+
     <p>{{ $t('common.message.hi') }}</p>
+    <p>{{ $tc('common.apple', 10) }}</p>
 
     <SvgIcon name="bag"></SvgIcon>
 

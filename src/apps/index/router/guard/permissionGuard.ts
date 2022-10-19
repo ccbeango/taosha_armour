@@ -6,12 +6,12 @@
  * @Description  : 权限守卫
  */
 import type { Router, RouteRecordRaw } from 'vue-router'
-import { useUserStore, usePermissionStore } from '@index/store'
+import { useUserStore, usePermissionStore } from '@/store'
 
 import { RootRoute } from '../routes'
-import { PageEnum } from '@index/enums/pageEnum'
+import { PageEnum } from '@/enums/pageEnum'
 
-import { PAGE_NOT_FOUND_ROUTE } from '@index/router/routes/basic'
+import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic'
 
 const ROOT_PATH = RootRoute.path
 const LOGIN_PATH = PageEnum.BASE_LOGIN

@@ -1,10 +1,17 @@
+/*
+ * @Author       : liuyinghao
+ * @Date         : 2022-10-09 15:38:10
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-19 16:10:26
+ * @Description  :
+ */
 import type { PluginOption } from 'vite'
 
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import configElementPlusPlugin from './elementPlus'
-import configMultiPagePlugin from './multiPage'
+import configMpaPlugin from './mpa'
 import configCompressPlugin from './compress'
 import configSvgIconsPlugin from './svgIcons'
 import configVisualizerPlugin from './visualizer'
@@ -25,7 +32,7 @@ export default function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     // ElementPlus
     configElementPlusPlugin(),
     // 多页面支持
-    configMultiPagePlugin(),
+    configMpaPlugin(),
     // SVG Sprites
     configSvgIconsPlugin(isBuild),
 

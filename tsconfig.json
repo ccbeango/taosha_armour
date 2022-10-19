@@ -16,13 +16,12 @@
     "types": ["vite/client"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@/*": ["src/*"],
-      "@index/*": ["src/apps/index/*"],
-      "@main/*": ["src/apps/main/*"],
+      // "@/*": ["src/*"],
+      "@/*": ["src/apps/index/*"],
+      // "@index/*": ["src/apps/index/*"],
       "@common/*": ["src/common/*"],
       "#/*": ["types/*"]
-    },
-    "preserveValueImports": false
+    }
   },
   "include": [
     "src/**/*.ts",

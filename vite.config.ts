@@ -1,3 +1,10 @@
+/*
+ * @Author       : liuyinghao
+ * @Date         : 2022-10-09 15:38:10
+ * @LastEditors  : liuyinghao
+ * @LastEditTime : 2022-10-19 14:21:08
+ * @Description  :
+ */
 import { fileURLToPath, URL } from 'url'
 import dayjs from 'dayjs'
 import { loadEnv } from 'vite'
@@ -43,9 +50,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     plugins: createVitePlugins(viteEnv, isBuild),
     resolve: {
       alias: {
-        '@': pathResolve('./src'),
-        '@index': pathResolve('./src/apps/index'),
-        '@main': pathResolve('./src/apps/main'),
+        // '@': pathResolve('./src'),
+        '@': pathResolve('./src/apps/index'),
+        // '@index': pathResolve('./src/apps/index'),
         '@common': pathResolve('./src/common'),
         '#': pathResolve('./types')
       }

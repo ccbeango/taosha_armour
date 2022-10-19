@@ -9,8 +9,8 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { UserInfo } from '#/store'
 
-import { router } from '@index/router'
-import { PageEnum } from '@index/enums/pageEnum'
+import { router } from '@/router'
+import { PageEnum } from '@/enums/pageEnum'
 
 export const useUserStore = defineStore('user', () => {
   const userInfo = ref<Nullable<UserInfo>>(null)

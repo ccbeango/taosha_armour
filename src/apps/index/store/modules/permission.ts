@@ -7,10 +7,10 @@
  */
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { Menu, AppRouteRecordRaw } from '@index/router/types'
+import type { Menu, AppRouteRecordRaw } from '@/router/types'
 
-import { isUrl } from '@index/utils/is'
-import { asyncRoutes } from '@index/router/routes'
+import { isUrl } from '@/utils/is'
+import { asyncRoutes } from '@/router/routes'
 
 interface TreeHelperConfig {
   id: string
